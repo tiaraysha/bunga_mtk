@@ -6,40 +6,59 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Hitung Bunga Tunggal</title>
     <style>
+        body {
+            background-color: #27517a;
+            font-family: Arial, sans-serif;
+        }
+
         form {
-            width: 50%;
-            margin: 25px 0;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin-top: 30px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        button, a {
+            width: 100%;
+        }
+
+        #hasil {
+            margin-top: 20px;
             font-size: 18px;
-            text-align: left;
-            justify-content: center;
-            align-items: center;
         }
     </style>
 </head>
 <body>
-    <center>
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
         <form id="bungaForm">
+            <h3 class="text-center mb-4">Kalkulator Bunga Tunggal</h3>
             <div class="mb-3 row">
-                <label for="modal" class="col-sm-2 col-form-label">Modal Awal (Rp)</label>
-                <div class="col-sm-10">
+                <label for="modal" class="col-sm-4 col-form-label">Modal Awal (Rp)</label>
+                <div class="col-sm-8">
                     <input type="number" class="form-control" id="modal" required>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="suku" class="col-sm-2 col-form-label">Suku Bunga (%)</label>
-                <div class="col-sm-10">
+                <label for="suku" class="col-sm-4 col-form-label">Suku Bunga (%)</label>
+                <div class="col-sm-8">
                     <input type="number" class="form-control" id="suku" required>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="periode" class="col-sm-2 col-form-label">Jumlah Periode</label>
-                <div class="col-sm-10">
+                <label for="periode" class="col-sm-4 col-form-label">Jumlah Periode</label>
+                <div class="col-sm-8">
                     <input type="number" class="form-control" id="periode" required>
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="type" class="col-sm-2 col-form-label">Periode</label>
-                <div class="col-sm-10">
+                <label for="type" class="col-sm-4 col-form-label">Periode</label>
+                <div class="col-sm-8">
                     <select class="form-select" id="type" required>
                         <option selected disabled hidden>Pilih</option>
                         <option value="tahun">Tahun</option>
@@ -50,11 +69,11 @@
                 </div>
             </div>
             <button type="button" onclick="hitungBunga()" class="btn btn-primary mt-3">Hitung</button>
-            <a class="btn btn-primary mt-3" href="index.html">Hitung Bunga Majemuk</a>
+            <a class="btn btn-secondary mt-3" href="index.html">Hitung Bunga Majemuk</a>
         </form>
-    </center>
 
-    <p id="hasil"></p>
+        <div id="hasil" class="text-center"></div>
+    </div>
 
     <script>
         function hitungBunga() {
@@ -90,11 +109,11 @@
             // Tampilkan hasil
             const hasilElement = document.getElementById('hasil');
             hasilElement.innerHTML = `
-                <center>
-                    Modal Awal: Rp ${modal.toLocaleString('id-ID')}<br>
-                    Bunga Tunggal: Rp ${bunga.toLocaleString('id-ID')}<br>
-                    Modal Akhir: Rp ${modalAkhir.toLocaleString('id-ID')}
-                </center>
+                <div>
+                    <p><strong>Modal Awal:</strong> Rp ${modal.toLocaleString('id-ID')}</p>
+                    <p><strong>Bunga Tunggal:</strong> Rp ${bunga.toLocaleString('id-ID')}</p>
+                    <p><strong>Modal Akhir:</strong> Rp ${modalAkhir.toLocaleString('id-ID')}</p>
+                </div>
             `;
         }
     </script>
